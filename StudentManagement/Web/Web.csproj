@@ -185,7 +185,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentManagement.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\StudentManagementEf.cs" />
+    <Compile Include="Data\StudentManagementEntities.cs" />
     <Compile Include="Data\Subject.cs">
       <DependentUpon>StudentManagement.tt</DependentUpon>
     </Compile>

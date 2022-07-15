@@ -13,7 +13,7 @@ namespace Web.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StudentManagementEntities : DbContext, IStudentManagementEntities
+    public partial class StudentManagementEntities : DbContext
     {
         public StudentManagementEntities(string connectionString)
             : base(connectionString)
@@ -23,26 +23,6 @@ namespace Web.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
-        }
-
-        void IStudentManagementEntities.SaveChanges()
-        {
-            this.SaveChanges();
-        }
-
-        public void Entry()
-        {
-            this.Entry();
-        }
-
-        public void Find()
-        {
-            this.Find();
-        }
-
-        public void Remove()
-        {
-            this.Remove();
         }
 
         public virtual DbSet<Class> Classes { get; set; }

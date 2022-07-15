@@ -303,3 +303,4 @@ E:\Source code\StudentManagementProject\StudentManagement\Web\obj\Debug\Web.cspr
 E:\Source code\StudentManagementProject\StudentManagement\Web\obj\Debug\Web.csproj.CopyComplete
 E:\Source code\StudentManagementProject\StudentManagement\Web\obj\Debug\Web.dll
 E:\Source code\StudentManagementProject\StudentManagement\Web\obj\Debug\Web.pdb
+E:\Source code\StudentManagementProject\StudentManagement\Web\obj\Debug\Web.csproj.AssemblyReference.cache
