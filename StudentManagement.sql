@@ -1,4 +1,3 @@
-
 create table Classes
 (
 	ClassID int primary key identity(1,1),
@@ -25,11 +24,11 @@ create table Subjects
 
 go
 
-create table Scores
+create table ExamResults
 (
+	ResultID int identity(1,1) primary key,
 	SubjectID int,
 	StudentID int,
-	CONSTRAINT PK_Score PRIMARY KEY (SubjectID,StudentID),
 	foreign key(SubjectID) references Subjects(SubjectID),
 	foreign key(StudentID) references Students(StudentID),
 	AvgScores float
