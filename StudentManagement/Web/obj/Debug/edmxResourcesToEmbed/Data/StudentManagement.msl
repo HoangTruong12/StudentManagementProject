@@ -9,9 +9,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Scores">
-      <EntityTypeMapping TypeName="StudentManagementModel.Score">
-        <MappingFragment StoreEntitySet="Scores">
+    <EntitySetMapping Name="ExamResults">
+      <EntityTypeMapping TypeName="StudentManagementModel.ExamResult">
+        <MappingFragment StoreEntitySet="ExamResults">
+          <ScalarProperty Name="ResultID" ColumnName="ResultID" />
           <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
           <ScalarProperty Name="StudentID" ColumnName="StudentID" />
           <ScalarProperty Name="AvgScores" ColumnName="AvgScores" />

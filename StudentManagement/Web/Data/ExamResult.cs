@@ -12,8 +12,9 @@ namespace Web.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Score
+    public partial class ExamResult
     {
+        public int ResultID { get; set; }
         public int SubjectID { get; set; }
         public int StudentID { get; set; }
         public Nullable<double> AvgScores { get; set; }

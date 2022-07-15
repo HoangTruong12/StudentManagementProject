@@ -7,13 +7,13 @@
     <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClassName" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <EntityType Name="Scores">
+  <EntityType Name="ExamResults">
     <Key>
-      <PropertyRef Name="SubjectID" />
-      <PropertyRef Name="StudentID" />
+      <PropertyRef Name="ResultID" />
     </Key>
-    <Property Name="SubjectID" Type="int" Nullable="false" />
-    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="StudentID" Type="int" />
     <Property Name="AvgScores" Type="float" />
   </EntityType>
   <EntityType Name="Students">
@@ -32,26 +32,26 @@
     <Property Name="SubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubjectName" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK__Scores__StudentI__4316F928">
-    <End Role="Students" Type="Self.Students" Multiplicity="1" />
-    <End Role="Scores" Type="Self.Scores" Multiplicity="*" />
+  <Association Name="FK__ExamResul__Stude__52593CB8">
+    <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+    <End Role="ExamResults" Type="Self.ExamResults" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Students">
         <PropertyRef Name="StudentID" />
       </Principal>
-      <Dependent Role="Scores">
+      <Dependent Role="ExamResults">
         <PropertyRef Name="StudentID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Scores__SubjectI__4222D4EF">
-    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
-    <End Role="Scores" Type="Self.Scores" Multiplicity="*" />
+  <Association Name="FK__ExamResul__Subje__5165187F">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+    <End Role="ExamResults" Type="Self.ExamResults" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Subjects">
         <PropertyRef Name="SubjectID" />
       </Principal>
-      <Dependent Role="Scores">
+      <Dependent Role="ExamResults">
         <PropertyRef Name="SubjectID" />
       </Dependent>
     </ReferentialConstraint>
@@ -70,16 +70,16 @@
   </Association>
   <EntityContainer Name="StudentManagementModelStoreContainer">
     <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Scores" EntityType="Self.Scores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamResults" EntityType="Self.ExamResults" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Scores__StudentI__4316F928" Association="Self.FK__Scores__StudentI__4316F928">
+    <AssociationSet Name="FK__ExamResul__Stude__52593CB8" Association="Self.FK__ExamResul__Stude__52593CB8">
       <End Role="Students" EntitySet="Students" />
-      <End Role="Scores" EntitySet="Scores" />
+      <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
-    <AssociationSet Name="FK__Scores__SubjectI__4222D4EF" Association="Self.FK__Scores__SubjectI__4222D4EF">
+    <AssociationSet Name="FK__ExamResul__Subje__5165187F" Association="Self.FK__ExamResul__Subje__5165187F">
       <End Role="Subjects" EntitySet="Subjects" />
-      <End Role="Scores" EntitySet="Scores" />
+      <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
     <AssociationSet Name="FK__Students__ClassI__3D5E1FD2" Association="Self.FK__Students__ClassI__3D5E1FD2">
       <End Role="Classes" EntitySet="Classes" />

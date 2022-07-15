@@ -17,9 +17,17 @@ namespace Web.Service.Implement
             _studentManagementEntities = studentManagementEntities;
         }
 
-        public IEnumerable<ClassDto> ClassDtos()
+        public IEnumerable<ClassDto> GetClasses()
         {
-            throw new NotImplementedException();
+            var listClasses = _studentManagementEntities.Classes.ToList();
+
+            var result = listClasses.Select(x => new ClassDto
+            {
+                ClassID = x.ClassID,
+                ClassName =x.ClassName
+            });
+
+            return result;
         }
     }
 }

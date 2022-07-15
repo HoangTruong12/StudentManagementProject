@@ -1,0 +1,51 @@
+﻿@model Web.Models.ExamResultDto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Exam Result</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResultID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResultID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubjectID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubjectID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvgScores)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvgScores)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ResultID }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>

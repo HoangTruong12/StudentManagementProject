@@ -20,6 +20,9 @@ namespace Web
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType<ClassService>().As<IClassService>().InstancePerLifetimeScope();
+            builder.RegisterType<StudentService>().As<IStudentService>().InstancePerLifetimeScope();
+            builder.RegisterType<SubjectService>().As<ISubjectService>().InstancePerLifetimeScope();
+            builder.RegisterType<ExamResultService>().As<IExamResultService>().InstancePerLifetimeScope();
 
             var connectionString = ConfigurationManager.ConnectionStrings["StudentManagementEntities"].ConnectionString;
             builder.Register<IStudentManagementEntities>(c => new StudentManagementEntities(connectionString)).InstancePerLifetimeScope();

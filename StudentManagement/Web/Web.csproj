@@ -156,14 +156,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ClassController.cs" />
+    <Compile Include="Controllers\ExamResultController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Data\Class.cs">
       <DependentUpon>StudentManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\IStudentManagementEntities.cs" />
-    <Compile Include="Data\Score.cs">
+    <Compile Include="Data\ExamResult.cs">
       <DependentUpon>StudentManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\IStudentManagementEntities.cs" />
     <Compile Include="Data\Student.cs">
       <DependentUpon>StudentManagement.tt</DependentUpon>
     </Compile>
@@ -182,6 +185,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentManagement.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\StudentManagementEf.cs" />
     <Compile Include="Data\Subject.cs">
       <DependentUpon>StudentManagement.tt</DependentUpon>
     </Compile>
@@ -190,9 +194,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClassDto.cs" />
+    <Compile Include="Models\ExamResultDto.cs" />
+    <Compile Include="Models\StudentDto.cs" />
+    <Compile Include="Models\SubjectDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Implement\ClassService.cs" />
+    <Compile Include="Service\Implement\ExamResultService.cs" />
+    <Compile Include="Service\Implement\StudentService.cs" />
+    <Compile Include="Service\Implement\SubjectService.cs" />
     <Compile Include="Service\Interfaces\IClassService.cs" />
+    <Compile Include="Service\Interfaces\IExamResultService.cs" />
+    <Compile Include="Service\Interfaces\IStudentService.cs" />
+    <Compile Include="Service\Interfaces\ISubjectService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -244,9 +257,22 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Class\Index.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Subject\Index.cshtml" />
+    <Content Include="Views\Subject\Create.cshtml" />
+    <Content Include="Views\Subject\Delete.cshtml" />
+    <Content Include="Views\Subject\Details.cshtml" />
+    <Content Include="Views\Subject\Edit.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
+    <Content Include="Views\ExamResult\Index.cshtml" />
+    <Content Include="Views\ExamResult\Details.cshtml" />
+    <Content Include="Views\ExamResult\Create.cshtml" />
+    <Content Include="Views\ExamResult\Delete.cshtml" />
+    <Content Include="Views\ExamResult\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

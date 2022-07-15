@@ -22,12 +22,31 @@ namespace Web.Data
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // throw new UnintentionalCodeFirstException();
-            base.OnModelCreating(modelBuilder);
+            throw new UnintentionalCodeFirstException();
         }
-    
+
+        void IStudentManagementEntities.SaveChanges()
+        {
+            this.SaveChanges();
+        }
+
+        public void Entry()
+        {
+            this.Entry();
+        }
+
+        public void Find()
+        {
+            this.Find();
+        }
+
+        public void Remove()
+        {
+            this.Remove();
+        }
+
         public virtual DbSet<Class> Classes { get; set; }
-        public virtual DbSet<Score> Scores { get; set; }
+        public virtual DbSet<ExamResult> ExamResults { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
     }

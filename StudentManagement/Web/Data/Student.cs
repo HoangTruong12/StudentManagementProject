@@ -17,7 +17,7 @@ namespace Web.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Student()
         {
-            this.Scores = new HashSet<Score>();
+            this.ExamResults = new HashSet<ExamResult>();
         }
     
         public int StudentID { get; set; }
@@ -27,6 +27,6 @@ namespace Web.Data
     
         public virtual Class Class { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Score> Scores { get; set; }
+        public virtual ICollection<ExamResult> ExamResults { get; set; }
     }
 }

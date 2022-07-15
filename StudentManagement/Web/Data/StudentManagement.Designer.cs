@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Source code\StudentManagement\Web\Data\StudentManagement.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Source code\StudentManagementProject\StudentManagement\Web\Data\StudentManagement.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

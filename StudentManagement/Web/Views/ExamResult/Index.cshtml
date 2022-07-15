@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Web.Models.ExamResultDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvgScores)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubjectID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AvgScores)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ResultID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ResultID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ResultID })
+        </td>
+    </tr>
+}
+
+</table>

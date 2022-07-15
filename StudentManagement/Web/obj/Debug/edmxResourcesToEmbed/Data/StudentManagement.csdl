@@ -8,16 +8,16 @@
     <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Students" Relationship="Self.FK__Students__ClassI__3D5E1FD2" FromRole="Classes" ToRole="Students" />
   </EntityType>
-  <EntityType Name="Score">
+  <EntityType Name="ExamResult">
     <Key>
-      <PropertyRef Name="SubjectID" />
-      <PropertyRef Name="StudentID" />
+      <PropertyRef Name="ResultID" />
     </Key>
-    <Property Name="SubjectID" Type="Int32" Nullable="false" />
-    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
     <Property Name="AvgScores" Type="Double" />
-    <NavigationProperty Name="Student" Relationship="Self.FK__Scores__StudentI__4316F928" FromRole="Scores" ToRole="Students" />
-    <NavigationProperty Name="Subject" Relationship="Self.FK__Scores__SubjectI__4222D4EF" FromRole="Scores" ToRole="Subjects" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__ExamResul__Stude__52593CB8" FromRole="ExamResults" ToRole="Students" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK__ExamResul__Subje__5165187F" FromRole="ExamResults" ToRole="Subjects" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -28,7 +28,7 @@
     <Property Name="Age" Type="Int32" />
     <Property Name="ClassID" Type="Int32" />
     <NavigationProperty Name="Class" Relationship="Self.FK__Students__ClassI__3D5E1FD2" FromRole="Students" ToRole="Classes" />
-    <NavigationProperty Name="Scores" Relationship="Self.FK__Scores__StudentI__4316F928" FromRole="Students" ToRole="Scores" />
+    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Stude__52593CB8" FromRole="Students" ToRole="ExamResults" />
   </EntityType>
   <EntityType Name="Subject">
     <Key>
@@ -36,7 +36,7 @@
     </Key>
     <Property Name="SubjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SubjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Scores" Relationship="Self.FK__Scores__SubjectI__4222D4EF" FromRole="Subjects" ToRole="Scores" />
+    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Subje__5165187F" FromRole="Subjects" ToRole="ExamResults" />
   </EntityType>
   <Association Name="FK__Students__ClassI__3D5E1FD2">
     <End Role="Classes" Type="Self.Class" Multiplicity="0..1" />
@@ -50,46 +50,46 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Scores__StudentI__4316F928">
-    <End Role="Students" Type="Self.Student" Multiplicity="1" />
-    <End Role="Scores" Type="Self.Score" Multiplicity="*" />
+  <Association Name="FK__ExamResul__Stude__52593CB8">
+    <End Role="Students" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="ExamResults" Type="Self.ExamResult" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Students">
         <PropertyRef Name="StudentID" />
       </Principal>
-      <Dependent Role="Scores">
+      <Dependent Role="ExamResults">
         <PropertyRef Name="StudentID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Scores__SubjectI__4222D4EF">
-    <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
-    <End Role="Scores" Type="Self.Score" Multiplicity="*" />
+  <Association Name="FK__ExamResul__Subje__5165187F">
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="ExamResults" Type="Self.ExamResult" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Subjects">
         <PropertyRef Name="SubjectID" />
       </Principal>
-      <Dependent Role="Scores">
+      <Dependent Role="ExamResults">
         <PropertyRef Name="SubjectID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="StudentManagementEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Classes" EntityType="Self.Class" />
-    <EntitySet Name="Scores" EntityType="Self.Score" />
+    <EntitySet Name="ExamResults" EntityType="Self.ExamResult" />
     <EntitySet Name="Students" EntityType="Self.Student" />
     <EntitySet Name="Subjects" EntityType="Self.Subject" />
     <AssociationSet Name="FK__Students__ClassI__3D5E1FD2" Association="Self.FK__Students__ClassI__3D5E1FD2">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Students" EntitySet="Students" />
     </AssociationSet>
-    <AssociationSet Name="FK__Scores__StudentI__4316F928" Association="Self.FK__Scores__StudentI__4316F928">
+    <AssociationSet Name="FK__ExamResul__Stude__52593CB8" Association="Self.FK__ExamResul__Stude__52593CB8">
       <End Role="Students" EntitySet="Students" />
-      <End Role="Scores" EntitySet="Scores" />
+      <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
-    <AssociationSet Name="FK__Scores__SubjectI__4222D4EF" Association="Self.FK__Scores__SubjectI__4222D4EF">
+    <AssociationSet Name="FK__ExamResul__Subje__5165187F" Association="Self.FK__ExamResul__Subje__5165187F">
       <End Role="Subjects" EntitySet="Subjects" />
-      <End Role="Scores" EntitySet="Scores" />
+      <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

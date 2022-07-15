@@ -8,6 +8,7 @@ namespace Web.Service.Interfaces
 {
     public interface IClassService
     {
-        IEnumerable<Models.ClassDto> ClassDtos();
+        IEnumerable<Models.ClassDto> GetClasses();
+
     }
 }

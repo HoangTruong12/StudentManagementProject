@@ -10,5 +10,12 @@ namespace Web.Data
     public interface IStudentManagementEntities
     {
         DbSet<Class> Classes { get; set; }
+        DbSet<Student> Students { get; set; }
+        DbSet<Subject> Subjects { get; set; }
+        DbSet<ExamResult> ExamResults { get; set; }
+        void SaveChanges();
+        void Entry();
+        void Find();
+        void Remove();
     }
 }
