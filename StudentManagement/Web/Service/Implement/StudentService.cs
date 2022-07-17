@@ -18,17 +18,23 @@ namespace Web.Service.Implement
         }
 
 
-        public IEnumerable<StudentDto> GetStudents()
+        public IEnumerable<StudentDto> GetStudents(string studentName)
         {
-            var listStudents = _studentManagementEntities.Students.ToList();
+            var listStudents = _studentManagementEntities.Students.Include("Class").ToList();
 
             var result = listStudents.Select(x => new StudentDto
             {
                 StudentID = x.StudentID,
                 StudentName = x.StudentName,
                 Age = x.Age,
-                ClassID = x.ClassID
+                ClassID = x.ClassID,
+                Class = x.Class
             });
+
+            if (!string.IsNullOrEmpty(studentName))
+            {
+                result = result.Where(x => x.StudentName.Contains(studentName));
+            }
 
             return result;
         }
@@ -41,7 +47,8 @@ namespace Web.Service.Implement
                 StudentID = data.StudentID,
                 StudentName = data.StudentName,
                 Age = data.Age,
-                ClassID = data.ClassID
+                ClassID = data.ClassID,
+                Class = data.Class
             };
             return convert;
         }
@@ -79,5 +86,18 @@ namespace Web.Service.Implement
         {
             _studentManagementEntities.SaveChanges();
         }
+
+        //public IEnumerable<ClassDto> GetClassNameByClassID(int classID)
+        //{
+        //    var listClasses = _studentManagementEntities.Classes.ToList();
+
+        //    var result = listClasses.Select(x => new ClassDto
+        //    {
+        //        ClassID = x.ClassID,
+        //        ClassName = x.ClassName,
+        //    });
+
+        //    return result;
+        //}
     }
 }

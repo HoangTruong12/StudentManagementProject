@@ -45,6 +45,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ClassID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ClassID, "", new { @class = "text-danger" })
+                @*<select asp-for="ClassID" class="form-control" asp-items="ViewBag.ClassID"></select>*@
             </div>
         </div>
 

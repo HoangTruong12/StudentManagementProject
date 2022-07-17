@@ -9,32 +9,41 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SubjectID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SubjectName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubjectID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubjectName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SubjectID}) |
-            @Html.ActionLink("Details", "Details", new { id=item.SubjectID}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SubjectID})
-        </td>
-    </tr>
+    @using (Html.BeginForm("Index", "Subject", FormMethod.Get))
+    {
+    <p>
+        Nhập tên môn học: @Html.TextBox("subjectName") <input type="submit" value="Search" />
+    </p>
 }
+    </p>
 
-</table>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubjectID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubjectName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SubjectID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.SubjectID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SubjectID })
+                </td>
+            </tr>
+        }
+
+    </table>

@@ -18,9 +18,9 @@ namespace Web.Controllers
         }
 
         // GET: Subject
-        public ActionResult Index()
+        public ActionResult Index(string subjectName)
         {
-            var listSubjects = _subjectService.GetSubjects();
+            var listSubjects = _subjectService.GetSubjects( subjectName);
             return View(listSubjects);
         }
 

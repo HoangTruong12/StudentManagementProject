@@ -16,10 +16,10 @@
             @Html.DisplayNameFor(model => model.ResultID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SubjectID)
+            @Html.DisplayNameFor(model => model.Subject.SubjectName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StudentID)
+            @Html.DisplayNameFor(model => model.Student.StudentName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AvgScores)
@@ -33,10 +33,10 @@
             @Html.DisplayFor(modelItem => item.ResultID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SubjectID)
+            @Html.DisplayFor(modelItem => item.Subject.SubjectName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StudentID)
+            @Html.DisplayFor(modelItem => item.Student.StudentName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AvgScores)

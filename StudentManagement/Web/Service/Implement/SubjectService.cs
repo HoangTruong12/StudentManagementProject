@@ -18,7 +18,7 @@ namespace Web.Service.Implement
             _studentManagementEntities = studentManagementEntities;
         }
 
-        public IEnumerable<SubjectDto> GetSubjects()
+        public IEnumerable<SubjectDto> GetSubjects(string subjectName)
         {
             var listSubjects = _studentManagementEntities.Subjects.ToList();
 
@@ -27,6 +27,11 @@ namespace Web.Service.Implement
                 SubjectID = x.SubjectID,
                 SubjectName = x.SubjectName
             });
+
+            if (!string.IsNullOrEmpty(subjectName))
+            {
+                result = result.Where(x => x.SubjectName.Contains(subjectName));
+            }
 
             return result;
         }

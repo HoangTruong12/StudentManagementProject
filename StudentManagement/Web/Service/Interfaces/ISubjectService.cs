@@ -9,7 +9,7 @@ namespace Web.Service.Interfaces
 {
     public interface ISubjectService
     {
-        IEnumerable<SubjectDto> GetSubjects();
+        IEnumerable<SubjectDto> GetSubjects(string subjectName);
 
         SubjectDto GetSubjectByID(int id);
 

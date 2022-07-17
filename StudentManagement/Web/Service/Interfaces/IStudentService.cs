@@ -9,7 +9,7 @@ namespace Web.Service.Interfaces
 {
     public interface IStudentService
     {
-        IEnumerable<StudentDto> GetStudents();
+        IEnumerable<StudentDto> GetStudents(string studentName);
         StudentDto GetStudentByID(int id);
 
         void InsertStudent(StudentDto student);
@@ -17,6 +17,8 @@ namespace Web.Service.Interfaces
         void UpdateStudent(StudentDto student);
 
         void DeleteStudent(int id);
+
+        //IEnumerable<ClassDto> GetClassNameByClassID(int classID);
 
         void Save();
     }

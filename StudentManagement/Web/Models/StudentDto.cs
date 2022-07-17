@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Web.Data;
 
 namespace Web.Models
 {
@@ -11,5 +12,7 @@ namespace Web.Models
         public string StudentName { get; set; }
         public int? Age { get; set; }
         public int? ClassID { get; set; }
+        public virtual Class Class { get; set; }
+        public virtual ICollection<ExamResult> ExamResults { get; set; }
     }
 }

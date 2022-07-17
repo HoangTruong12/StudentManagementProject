@@ -17,5 +17,6 @@ namespace Web.Data
         void Entry();
         void Find();
         void Remove();
+        void Include();
     }
 }

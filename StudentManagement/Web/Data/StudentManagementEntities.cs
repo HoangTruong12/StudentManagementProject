@@ -27,5 +27,9 @@ namespace Web.Data
             this.Remove();
         }
 
+        public void Include()
+        {
+            this.Include();
+        }
     }
 }

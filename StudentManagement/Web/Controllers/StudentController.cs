@@ -17,9 +17,11 @@ namespace Web.Controllers
             _studentService = studentService;
         }
         // GET: Student
-        public ActionResult Index()
+        public ActionResult Index(string studentName)
         {
-            var listStudents = _studentService.GetStudents();
+            var listStudents = _studentService.GetStudents(studentName);
+            //var listClassName = _studentService.GetClassNameByClassID(classID);
+            //ViewBag.classID = new SelectList(listClassName, "ClassID", "ClassName");
             return View(listStudents);
         }
 
@@ -50,6 +52,7 @@ namespace Web.Controllers
             {
                 ModelState.AddModelError("", "Error");
             }
+           
             return View(student);
         }
 
