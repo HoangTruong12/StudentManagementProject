@@ -22,31 +22,43 @@
             @Html.DisplayNameFor(model => model.Student.StudentName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AvgScores)
+            @Html.DisplayNameFor(model => model.StartTermPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MidTermPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTermPoint)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ResultID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject.SubjectName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student.StudentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AvgScores)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ResultID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ResultID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ResultID })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ResultID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Subject.SubjectName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student.StudentName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartTermPoint)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MidTermPoint)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EndTermPoint)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ResultID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ResultID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ResultID })
+    </td>
+</tr>
 }
 
 </table>

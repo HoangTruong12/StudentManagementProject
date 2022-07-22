@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="556723d2dec54ff4bb65160a206cb7b0" Name="Diagram1">
-        <EntityTypeShape EntityType="StudentManagementModel.Class" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentManagementModel.ExamResult" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentManagementModel.Student" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentManagementModel.Subject" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <AssociationConnector Association="StudentManagementModel.FK__Students__ClassI__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="StudentManagementModel.FK__ExamResul__Stude__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="StudentManagementModel.FK__ExamResul__Subje__5165187F" ManuallyRouted="false" />
+      <Diagram DiagramId="1e87d867ec0243358cead6cd689b060a" Name="Diagram1">
+        <EntityTypeShape EntityType="StudentManagementModel.Class" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentManagementModel.ExamResult" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentManagementModel.Student" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentManagementModel.Subject" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="StudentManagementModel.FK__Students__ClassI__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementModel.FK__ExamResul__Stude__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementModel.FK__ExamResul__Subje__693CA210" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

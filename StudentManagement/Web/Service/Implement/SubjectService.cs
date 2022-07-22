@@ -59,8 +59,11 @@ namespace Web.Service.Implement
         public void UpdateSubject(SubjectDto subject)
         {
             var data = _studentManagementEntities.Subjects.FirstOrDefault(x => x.SubjectID == subject.SubjectID);
-            data.SubjectID = subject.SubjectID;
-            data.SubjectName = subject.SubjectName;
+            if (data != null)
+            {
+                data.SubjectID = subject.SubjectID;
+                data.SubjectName = subject.SubjectName;
+            }
         }
 
         public void DeleteSubject(int id)

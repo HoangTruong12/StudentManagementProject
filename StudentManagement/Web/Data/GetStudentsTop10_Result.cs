@@ -10,18 +10,16 @@
 namespace Web.Data
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ExamResult
+    public partial class GetStudentsTop10_Result
     {
-        public int ResultID { get; set; }
-        public int SubjectID { get; set; }
-        public int StudentID { get; set; }
+        public string StudentName { get; set; }
+        public Nullable<int> Age { get; set; }
+        public string ClassName { get; set; }
+        public string SubjectName { get; set; }
         public Nullable<double> StartTermPoint { get; set; }
         public Nullable<double> MidTermPoint { get; set; }
         public Nullable<double> EndTermPoint { get; set; }
-    
-        public virtual Student Student { get; set; }
-        public virtual Subject Subject { get; set; }
+        public Nullable<double> AvgScore { get; set; }
     }
 }

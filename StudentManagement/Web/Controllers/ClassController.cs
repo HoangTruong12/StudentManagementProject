@@ -103,5 +103,11 @@ namespace Web.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        //public ActionResult Search(string className)
+        //{
+        //    var classes = _classService.Search(className);
+        //    return View(classes);
+        //}
     }
 }

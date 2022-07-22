@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Web.Models.SearchInforDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Search", FormMethod.Get))
+{
+    <div class="form-group row">
+        <div class="col-lg-10">
+            Nhập tên học sinh: @Html.TextBox("studentName") --- Lớp: @Html.DropDownList("className", "Tất cả") --- Học lực: @Html.DropDownList("rating", new SelectList(new[] { "Chọn học lực", "Giỏi", "Khá", "Trung bình", "Yếu" }))
+        </div>
+
+    </div>
+
+    <div class="form-group ">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+}
+
+@*@using (Html.BeginForm("Index", "Search", FormMethod.Get))
+    {
+        <b>Search Option: </b> @Html.RadioButton("option", "StudentNameSearch") <text>StudentName</text>
+        @Html.RadioButton("option", "ClassNameSearch") <text>ClassName</text>
+        @Html.RadioButton("option", "Rating") <text>Rating</text>
+        @Html.RadioButton("option", "Reset") <text>Reset</text>
+        <p>
+                <fieldset>Học lực: @Html.DropDownList("Rating")</fieldset>
+            <input type="submit" name="rating" value="" />
+            </p>
+        <p>
+            Nhập : @Html.TextBox("searchString") <input type="submit" value="Search" />
+        </p>
+    }*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvgScore)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvgScore)
+            </td>
+        </tr>
+    }
+
+</table>

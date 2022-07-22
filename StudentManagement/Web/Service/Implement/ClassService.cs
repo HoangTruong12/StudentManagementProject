@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using Web.Data;
@@ -16,7 +17,7 @@ namespace Web.Service.Implement
         {
             _studentManagementEntities = studentManagementEntities;
         }
-      
+
         public IEnumerable<ClassDto> GetClasses(string className)
         {
             //var listClasses = from c in _studentManagementEntities.Classes
@@ -44,6 +45,8 @@ namespace Web.Service.Implement
 
             return result;
         }
+
+
 
         public ClassDto GetClassByID(int id)
         {
@@ -82,5 +85,20 @@ namespace Web.Service.Implement
         {
             _studentManagementEntities.SaveChanges();
         }
+
+        //public IEnumerable<GetStudentByClassName_ResultDto> Search(string className)
+        //{
+        //    var std = _studentManagementEntities.GetStudentsByClassName(className);
+        //    var convert = std.Select(x => new GetStudentByClassName_ResultDto
+        //    {
+        //        StudentName = x.StudentName,
+        //        Age = x.Age,
+        //        ClassName = x.ClassName,
+        //        SubjectName = x.SubjectName,
+        //        AvgScores = x.AvgScores
+        //    }).ToList();
+
+        //    return convert;
+        //}
     }
 }

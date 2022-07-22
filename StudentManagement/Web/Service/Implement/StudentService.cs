@@ -18,7 +18,7 @@ namespace Web.Service.Implement
         }
 
 
-        public IEnumerable<StudentDto> GetStudents(string studentName)
+        public IEnumerable<StudentDto> GetStudents(string studentName, int classID = 0)
         {
             var listStudents = _studentManagementEntities.Students.Include("Class").ToList();
 
@@ -31,9 +31,16 @@ namespace Web.Service.Implement
                 Class = x.Class
             });
 
+            // Tìm kiếm theo chuỗi
             if (!string.IsNullOrEmpty(studentName))
             {
                 result = result.Where(x => x.StudentName.Contains(studentName));
+            }
+
+            // Tìm kiếm theo ClassID
+            if(classID != 0)
+            {
+                result = result.Where(x => x.ClassID == classID);
             }
 
             return result;
@@ -60,7 +67,7 @@ namespace Web.Service.Implement
                 StudentID = student.StudentID,
                 StudentName = student.StudentName,
                 Age = student.Age,
-                ClassID = student.ClassID
+                ClassID = student.ClassID,
             });
         }
 
@@ -87,17 +94,27 @@ namespace Web.Service.Implement
             _studentManagementEntities.SaveChanges();
         }
 
-        //public IEnumerable<ClassDto> GetClassNameByClassID(int classID)
-        //{
-        //    var listClasses = _studentManagementEntities.Classes.ToList();
+        public IEnumerable<ClassDto> GetAllClasses()
+        {
+            var listClasses = _studentManagementEntities.Classes.ToList();
 
-        //    var result = listClasses.Select(x => new ClassDto
-        //    {
-        //        ClassID = x.ClassID,
-        //        ClassName = x.ClassName,
-        //    });
+            var result = listClasses.Select(x => new ClassDto
+            {
+                ClassID = x.ClassID,
+                ClassName = x.ClassName,
+            });
 
-        //    return result;
-        //}
+            return result;
+        }
+
+        public void SubjectsRegistration(ExamResultDto examResult)
+        {
+            _studentManagementEntities.ExamResults.Add(new ExamResult
+            {
+                StudentID = examResult.StudentID,
+                Student = examResult.Student,
+                Subject = examResult.Subject
+            });
+        }
     }
 }

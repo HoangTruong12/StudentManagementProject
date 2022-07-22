@@ -26,7 +26,9 @@ namespace Web.Service.Implement
                 ResultID = x.ResultID,
                 StudentID = x.StudentID,
                 SubjectID = x.SubjectID,
-                AvgScores = x.AvgScores,
+                StartTermPoint = x.StartTermPoint,
+                MidTermPoint = x.MidTermPoint,
+                EndTermPoint = x.EndTermPoint,
                 Subject = x.Subject,
                 Student = x.Student,
             });
@@ -42,7 +44,9 @@ namespace Web.Service.Implement
                 ResultID = data.ResultID,
                 SubjectID = data.SubjectID,
                 StudentID = data.StudentID,
-                AvgScores = data.AvgScores
+                StartTermPoint = data.StartTermPoint,
+                MidTermPoint = data.MidTermPoint,
+                EndTermPoint = data.EndTermPoint,
             };
             return convert;
         }
@@ -54,7 +58,9 @@ namespace Web.Service.Implement
                 ResultID = examResult.ResultID,
                 SubjectID = examResult.SubjectID,
                 StudentID = examResult.StudentID,
-                AvgScores = examResult.AvgScores
+                StartTermPoint = examResult.StartTermPoint,
+                MidTermPoint = examResult.MidTermPoint,
+                EndTermPoint = examResult.EndTermPoint,
             });
         }
 
@@ -66,7 +72,9 @@ namespace Web.Service.Implement
                 data.ResultID = examResult.ResultID;
                 data.SubjectID = examResult.SubjectID;
                 data.StudentID = examResult.StudentID;
-                data.AvgScores = examResult.AvgScores;
+                data.StartTermPoint = examResult.StartTermPoint;
+                data.MidTermPoint = examResult.MidTermPoint;
+                data.EndTermPoint = examResult.EndTermPoint;
             }
         }
 

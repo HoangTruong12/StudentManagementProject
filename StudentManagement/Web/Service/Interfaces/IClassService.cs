@@ -16,6 +16,7 @@ namespace Web.Service.Interfaces
 
         void UpdateClass(ClassDto classDto);
         void DeleteClass(int id);
+        // IEnumerable<GetStudentByClassName_ResultDto> Search(string className);
         void Save();
 
     }

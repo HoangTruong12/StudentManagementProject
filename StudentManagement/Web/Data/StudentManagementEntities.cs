@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
 
@@ -7,16 +9,6 @@ namespace Web.Data
 {
     public partial class StudentManagementEntities : IStudentManagementEntities
     {
-        void IStudentManagementEntities.SaveChanges()
-        {
-            this.SaveChanges();
-        }
-
-        public void Entry()
-        {
-            this.Entry();
-        }
-
         public void Find()
         {
             this.Find();
@@ -30,6 +22,11 @@ namespace Web.Data
         public void Include()
         {
             this.Include();
+        }
+
+        void IStudentManagementEntities.SaveChanges()
+        {
+            this.SaveChanges();
         }
     }
 }

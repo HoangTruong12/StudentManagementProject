@@ -17,12 +17,15 @@ namespace Web.Controllers
             _studentService = studentService;
         }
         // GET: Student
-        public ActionResult Index(string studentName)
+        public ActionResult Index(string studentName, int classID = 0)
         {
-            var listStudents = _studentService.GetStudents(studentName);
-            //var listClassName = _studentService.GetClassNameByClassID(classID);
-            //ViewBag.classID = new SelectList(listClassName, "ClassID", "ClassName");
-            return View(listStudents);
+            var classes = _studentService.GetAllClasses();
+            // Hiển thị ClassID bằng ClassName cho DropDownList bên View
+            ViewBag.classID = new SelectList(classes, "ClassID", "ClassName");
+
+            var listStudents = _studentService.GetStudents(studentName, classID);
+
+            return View(listStudents.ToList());
         }
 
         public ActionResult Details(int id)
@@ -33,6 +36,8 @@ namespace Web.Controllers
 
         public ActionResult Create()
         {
+            var classes = _studentService.GetAllClasses();
+            ViewBag.createID = new SelectList(classes, "ClassID", "ClassName");
             return View(new StudentDto());
         }
 
@@ -104,6 +109,11 @@ namespace Web.Controllers
                 });
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Register(ExamResultDto examResult)
+        {
+            return View(examResult);
         }
     }
 }

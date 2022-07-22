@@ -21,29 +21,44 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SubjectID)
+            @Html.DisplayNameFor(model => model.Subject.SubjectName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SubjectID)
+            @Html.DisplayFor(model => model.Subject.SubjectName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StudentID)
+            @Html.DisplayNameFor(model => model.Student.StudentName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StudentID)
+            @Html.DisplayFor(model => model.Student.StudentName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AvgScores)
+            @Html.DisplayNameFor(model => model.StartTermPoint)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AvgScores)
+            @Html.DisplayFor(model => model.StartTermPoint)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.MidTermPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MidTermPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTermPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTermPoint)
+        </dd>
     </dl>
 
     @using (Html.BeginForm()) {

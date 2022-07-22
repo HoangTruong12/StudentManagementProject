@@ -7,16 +7,16 @@
 
 <h2>Danh sách học sinh</h2>
 
-<p>
     @Html.ActionLink("Create New", "Create")
 
     @using (Html.BeginForm("Index", "Student", FormMethod.Get))
     {
 <p>
-    Nhập tên học sinh: @Html.TextBox("studentName") <input type="submit" value="Search" />
+    Nhập tên học sinh: @Html.TextBox("studentName") --- Lớp: @Html.DropDownList("classID", "All") <input type="submit" value="Search" />
 </p>
      }
-</p>
+
+
 
     <table class="table">
         <tr>
@@ -53,7 +53,8 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentID }) |
+                    @Html.ActionLink("Register", "Register", new { id = item.StudentID })
                 </td>
             </tr>
         }

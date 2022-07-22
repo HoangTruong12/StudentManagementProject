@@ -12,6 +12,8 @@ namespace Web.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class StudentManagementEntities : DbContext
     {
@@ -24,10 +26,47 @@ namespace Web.Data
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<ExamResult> ExamResults { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
+    
+        public virtual ObjectResult<GetAllSearchInfo_Result> GetAllSearchInfo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllSearchInfo_Result>("GetAllSearchInfo");
+        }
+    
+        public virtual ObjectResult<GetStudentsByClassName_Result> GetStudentsByClassName(string className)
+        {
+            var classNameParameter = className != null ?
+                new ObjectParameter("ClassName", className) :
+                new ObjectParameter("ClassName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentsByClassName_Result>("GetStudentsByClassName", classNameParameter);
+        }
+    
+        public virtual ObjectResult<GetStudentsByStudentName_Result> GetStudentsByStudentName(string studentName)
+        {
+            var studentNameParameter = studentName != null ?
+                new ObjectParameter("StudentName", studentName) :
+                new ObjectParameter("StudentName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentsByStudentName_Result>("GetStudentsByStudentName", studentNameParameter);
+        }
+    
+        public virtual ObjectResult<GetStudentsInfoByRating_Result> GetStudentsInfoByRating(string rating)
+        {
+            var ratingParameter = rating != null ?
+                new ObjectParameter("Rating", rating) :
+                new ObjectParameter("Rating", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentsInfoByRating_Result>("GetStudentsInfoByRating", ratingParameter);
+        }
+    
+        public virtual ObjectResult<GetStudentsTop10_Result> GetStudentsTop10()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentsTop10_Result>("GetStudentsTop10");
+        }
     }
 }

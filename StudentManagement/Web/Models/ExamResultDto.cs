@@ -11,7 +11,9 @@ namespace Web.Models
         public int ResultID { get; set; }
         public int SubjectID { get; set; }
         public int StudentID { get; set; }
-        public double? AvgScores { get; set; }
+        public Nullable<double> StartTermPoint { get; set; }
+        public Nullable<double> MidTermPoint { get; set; }
+        public Nullable<double> EndTermPoint { get; set; }
         public virtual Student Student { get; set; }
         public virtual Subject Subject { get; set; }
     }
