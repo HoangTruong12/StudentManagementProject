@@ -26,6 +26,7 @@ namespace Web.Controllers
             var listStudents = _studentService.GetStudents(studentName, classID);
 
             return View(listStudents.ToList());
+
         }
 
         public ActionResult Details(int id)

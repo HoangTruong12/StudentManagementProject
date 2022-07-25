@@ -21,6 +21,8 @@ namespace Web.Data
         ObjectResult<GetStudentsInfoByRating_Result> GetStudentsInfoByRating(string rating);
         ObjectResult<GetStudentsTop10_Result> GetStudentsTop10();
 
+        ObjectResult<string> GetClassName();
+
         void SaveChanges();
         void Find();
         void Remove();

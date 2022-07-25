@@ -6,20 +6,20 @@
     </Key>
     <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Students" Relationship="Self.FK__Students__ClassI__619B8048" FromRole="Classes" ToRole="Students" />
+    <NavigationProperty Name="Students" Relationship="Self.FK__Students__ClassI__25518C17" FromRole="Classes" ToRole="Students" />
   </EntityType>
   <EntityType Name="ExamResult">
     <Key>
       <PropertyRef Name="ResultID" />
     </Key>
     <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SubjectID" Type="Int32" Nullable="false" />
-    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="SubjectID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
     <Property Name="StartTermPoint" Type="Double" />
     <Property Name="MidTermPoint" Type="Double" />
     <Property Name="EndTermPoint" Type="Double" />
-    <NavigationProperty Name="Student" Relationship="Self.FK__ExamResul__Stude__6A30C649" FromRole="ExamResults" ToRole="Students" />
-    <NavigationProperty Name="Subject" Relationship="Self.FK__ExamResul__Subje__693CA210" FromRole="ExamResults" ToRole="Subjects" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__ExamResul__Stude__2B0A656D" FromRole="ExamResults" ToRole="Students" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK__ExamResul__Subje__2A164134" FromRole="ExamResults" ToRole="Subjects" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -29,8 +29,8 @@
     <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="Int32" />
     <Property Name="ClassID" Type="Int32" />
-    <NavigationProperty Name="Class" Relationship="Self.FK__Students__ClassI__619B8048" FromRole="Students" ToRole="Classes" />
-    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Stude__6A30C649" FromRole="Students" ToRole="ExamResults" />
+    <NavigationProperty Name="Class" Relationship="Self.FK__Students__ClassI__25518C17" FromRole="Students" ToRole="Classes" />
+    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Stude__2B0A656D" FromRole="Students" ToRole="ExamResults" />
   </EntityType>
   <EntityType Name="Subject">
     <Key>
@@ -38,10 +38,12 @@
     </Key>
     <Property Name="SubjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SubjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Subje__693CA210" FromRole="Subjects" ToRole="ExamResults" />
+    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Subje__2A164134" FromRole="Subjects" ToRole="ExamResults" />
   </EntityType>
-  <Association Name="FK__Students__ClassI__619B8048">
-    <End Role="Classes" Type="Self.Class" Multiplicity="0..1" />
+  <Association Name="FK__Students__ClassI__25518C17">
+    <End Role="Classes" Type="Self.Class" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Students" Type="Self.Student" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Classes">
@@ -52,8 +54,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ExamResul__Stude__6A30C649">
-    <End Role="Students" Type="Self.Student" Multiplicity="1" />
+  <Association Name="FK__ExamResul__Stude__2B0A656D">
+    <End Role="Students" Type="Self.Student" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ExamResults" Type="Self.ExamResult" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Students">
@@ -64,8 +68,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ExamResul__Subje__693CA210">
-    <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+  <Association Name="FK__ExamResul__Subje__2A164134">
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ExamResults" Type="Self.ExamResult" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Subjects">
@@ -81,19 +87,20 @@
     <EntitySet Name="ExamResults" EntityType="Self.ExamResult" />
     <EntitySet Name="Students" EntityType="Self.Student" />
     <EntitySet Name="Subjects" EntityType="Self.Subject" />
-    <AssociationSet Name="FK__Students__ClassI__619B8048" Association="Self.FK__Students__ClassI__619B8048">
+    <AssociationSet Name="FK__Students__ClassI__25518C17" Association="Self.FK__Students__ClassI__25518C17">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Students" EntitySet="Students" />
     </AssociationSet>
-    <AssociationSet Name="FK__ExamResul__Stude__6A30C649" Association="Self.FK__ExamResul__Stude__6A30C649">
+    <AssociationSet Name="FK__ExamResul__Stude__2B0A656D" Association="Self.FK__ExamResul__Stude__2B0A656D">
       <End Role="Students" EntitySet="Students" />
       <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
-    <AssociationSet Name="FK__ExamResul__Subje__693CA210" Association="Self.FK__ExamResul__Subje__693CA210">
+    <AssociationSet Name="FK__ExamResul__Subje__2A164134" Association="Self.FK__ExamResul__Subje__2A164134">
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
     <FunctionImport Name="GetAllSearchInfo" ReturnType="Collection(StudentManagementModel.GetAllSearchInfo_Result)" />
+    <FunctionImport Name="GetClassName" ReturnType="Collection(String)" />
     <FunctionImport Name="GetStudentsByClassName" ReturnType="Collection(StudentManagementModel.GetStudentsByClassName_Result)">
       <Parameter Name="ClassName" Mode="In" Type="String" />
     </FunctionImport>

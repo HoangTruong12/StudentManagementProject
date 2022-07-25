@@ -37,6 +37,11 @@ namespace Web.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllSearchInfo_Result>("GetAllSearchInfo");
         }
     
+        public virtual ObjectResult<string> GetClassName()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetClassName");
+        }
+    
         public virtual ObjectResult<GetStudentsByClassName_Result> GetStudentsByClassName(string className)
         {
             var classNameParameter = className != null ?

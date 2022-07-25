@@ -101,11 +101,24 @@ namespace Web.Service.Implement
         {
             var listClasses = _studentManagementEntities.Classes.ToList();
 
-            var result = listClasses.Select(x => new ClassDto
+            //var result = listClasses.Select(x => new ClassDto
+            //{
+            //    ClassID = x.ClassID,
+            //    ClassName = x.ClassName,
+            //});
+
+            //return result.Distinct();
+
+            var query = (from ClassName in listClasses
+                         select ClassName
+                         ).Distinct();
+
+            var result = query.Select(x => new ClassDto
             {
                 ClassID = x.ClassID,
                 ClassName = x.ClassName,
             });
+
 
             return result;
         }

@@ -53,6 +53,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetClassName" FunctionName="StudentManagementModel.Store.GetClassName" />
     <FunctionImportMapping FunctionImportName="GetStudentsByClassName" FunctionName="StudentManagementModel.Store.GetStudentsByClassName">
       <ResultMapping>
         <ComplexTypeMapping TypeName="StudentManagementModel.GetStudentsByClassName_Result">

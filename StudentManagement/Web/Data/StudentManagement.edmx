@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="StudentManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="StudentManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Classes">
           <Key>
             <PropertyRef Name="ClassID" />
@@ -17,8 +17,8 @@
             <PropertyRef Name="ResultID" />
           </Key>
           <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SubjectID" Type="int" Nullable="false" />
-          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" />
+          <Property Name="StudentID" Type="int" />
           <Property Name="StartTermPoint" Type="float" />
           <Property Name="MidTermPoint" Type="float" />
           <Property Name="EndTermPoint" Type="float" />
@@ -39,8 +39,10 @@
           <Property Name="SubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SubjectName" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK__ExamResul__Stude__6A30C649">
-          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+        <Association Name="FK__ExamResul__Stude__2B0A656D">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ExamResults" Type="Self.ExamResults" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Students">
@@ -51,8 +53,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ExamResul__Subje__693CA210">
-          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+        <Association Name="FK__ExamResul__Subje__2A164134">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ExamResults" Type="Self.ExamResults" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Subjects">
@@ -63,8 +67,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Students__ClassI__619B8048">
-          <End Role="Classes" Type="Self.Classes" Multiplicity="0..1" />
+        <Association Name="FK__Students__ClassI__25518C17">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Students" Type="Self.Students" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Classes">
@@ -76,6 +82,7 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="GetAllSearchInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetClassName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetStudentsByClassName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ClassName" Type="nvarchar" Mode="In" />
         </Function>
@@ -91,20 +98,21 @@
           <EntitySet Name="ExamResults" EntityType="Self.ExamResults" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ExamResul__Stude__6A30C649" Association="Self.FK__ExamResul__Stude__6A30C649">
+          <AssociationSet Name="FK__ExamResul__Stude__2B0A656D" Association="Self.FK__ExamResul__Stude__2B0A656D">
             <End Role="Students" EntitySet="Students" />
             <End Role="ExamResults" EntitySet="ExamResults" />
           </AssociationSet>
-          <AssociationSet Name="FK__ExamResul__Subje__693CA210" Association="Self.FK__ExamResul__Subje__693CA210">
+          <AssociationSet Name="FK__ExamResul__Subje__2A164134" Association="Self.FK__ExamResul__Subje__2A164134">
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="ExamResults" EntitySet="ExamResults" />
           </AssociationSet>
-          <AssociationSet Name="FK__Students__ClassI__619B8048" Association="Self.FK__Students__ClassI__619B8048">
+          <AssociationSet Name="FK__Students__ClassI__25518C17" Association="Self.FK__Students__ClassI__25518C17">
             <End Role="Classes" EntitySet="Classes" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StudentManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -114,20 +122,20 @@
           </Key>
           <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Students" Relationship="Self.FK__Students__ClassI__619B8048" FromRole="Classes" ToRole="Students" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__ClassI__25518C17" FromRole="Classes" ToRole="Students" />
         </EntityType>
         <EntityType Name="ExamResult">
           <Key>
             <PropertyRef Name="ResultID" />
           </Key>
           <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SubjectID" Type="Int32" Nullable="false" />
-          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="SubjectID" Type="Int32" />
+          <Property Name="StudentID" Type="Int32" />
           <Property Name="StartTermPoint" Type="Double" />
           <Property Name="MidTermPoint" Type="Double" />
           <Property Name="EndTermPoint" Type="Double" />
-          <NavigationProperty Name="Student" Relationship="Self.FK__ExamResul__Stude__6A30C649" FromRole="ExamResults" ToRole="Students" />
-          <NavigationProperty Name="Subject" Relationship="Self.FK__ExamResul__Subje__693CA210" FromRole="ExamResults" ToRole="Subjects" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__ExamResul__Stude__2B0A656D" FromRole="ExamResults" ToRole="Students" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__ExamResul__Subje__2A164134" FromRole="ExamResults" ToRole="Subjects" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -137,8 +145,8 @@
           <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="Int32" />
           <Property Name="ClassID" Type="Int32" />
-          <NavigationProperty Name="Class" Relationship="Self.FK__Students__ClassI__619B8048" FromRole="Students" ToRole="Classes" />
-          <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Stude__6A30C649" FromRole="Students" ToRole="ExamResults" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Students__ClassI__25518C17" FromRole="Students" ToRole="Classes" />
+          <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Stude__2B0A656D" FromRole="Students" ToRole="ExamResults" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -146,10 +154,12 @@
           </Key>
           <Property Name="SubjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Subje__693CA210" FromRole="Subjects" ToRole="ExamResults" />
+          <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Subje__2A164134" FromRole="Subjects" ToRole="ExamResults" />
         </EntityType>
-        <Association Name="FK__Students__ClassI__619B8048">
-          <End Role="Classes" Type="Self.Class" Multiplicity="0..1" />
+        <Association Name="FK__Students__ClassI__25518C17">
+          <End Role="Classes" Type="Self.Class" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Students" Type="Self.Student" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Classes">
@@ -160,8 +170,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ExamResul__Stude__6A30C649">
-          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+        <Association Name="FK__ExamResul__Stude__2B0A656D">
+          <End Role="Students" Type="Self.Student" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ExamResults" Type="Self.ExamResult" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Students">
@@ -172,8 +184,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ExamResul__Subje__693CA210">
-          <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+        <Association Name="FK__ExamResul__Subje__2A164134">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ExamResults" Type="Self.ExamResult" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Subjects">
@@ -189,27 +203,28 @@
           <EntitySet Name="ExamResults" EntityType="Self.ExamResult" />
           <EntitySet Name="Students" EntityType="Self.Student" />
           <EntitySet Name="Subjects" EntityType="Self.Subject" />
-          <AssociationSet Name="FK__Students__ClassI__619B8048" Association="Self.FK__Students__ClassI__619B8048">
+          <AssociationSet Name="FK__Students__ClassI__25518C17" Association="Self.FK__Students__ClassI__25518C17">
             <End Role="Classes" EntitySet="Classes" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="FK__ExamResul__Stude__6A30C649" Association="Self.FK__ExamResul__Stude__6A30C649">
+          <AssociationSet Name="FK__ExamResul__Stude__2B0A656D" Association="Self.FK__ExamResul__Stude__2B0A656D">
             <End Role="Students" EntitySet="Students" />
             <End Role="ExamResults" EntitySet="ExamResults" />
           </AssociationSet>
-          <AssociationSet Name="FK__ExamResul__Subje__693CA210" Association="Self.FK__ExamResul__Subje__693CA210">
+          <AssociationSet Name="FK__ExamResul__Subje__2A164134" Association="Self.FK__ExamResul__Subje__2A164134">
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="ExamResults" EntitySet="ExamResults" />
           </AssociationSet>
           <FunctionImport Name="GetAllSearchInfo" ReturnType="Collection(StudentManagementModel.GetAllSearchInfo_Result)" />
+          <FunctionImport Name="GetClassName" ReturnType="Collection(String)" />
           <FunctionImport Name="GetStudentsByClassName" ReturnType="Collection(StudentManagementModel.GetStudentsByClassName_Result)">
-          <Parameter Name="ClassName" Mode="In" Type="String" />
+            <Parameter Name="ClassName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetStudentsByStudentName" ReturnType="Collection(StudentManagementModel.GetStudentsByStudentName_Result)">
-          <Parameter Name="StudentName" Mode="In" Type="String" />
+            <Parameter Name="StudentName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetStudentsInfoByRating" ReturnType="Collection(StudentManagementModel.GetStudentsInfoByRating_Result)">
-          <Parameter Name="Rating" Mode="In" Type="String" />
+            <Parameter Name="Rating" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetStudentsTop10" ReturnType="Collection(StudentManagementModel.GetStudentsTop10_Result)" />
         </EntityContainer>
@@ -321,6 +336,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetClassName" FunctionName="StudentManagementModel.Store.GetClassName" />
           <FunctionImportMapping FunctionImportName="GetStudentsByClassName" FunctionName="StudentManagementModel.Store.GetStudentsByClassName">
             <ResultMapping>
               <ComplexTypeMapping TypeName="StudentManagementModel.GetStudentsByClassName_Result">

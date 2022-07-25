@@ -382,4 +382,3 @@ E:\Source code\StudentManagementProject\StudentManagement\Web\bin\ru\DevExpress.
 E:\Source code\StudentManagementProject\StudentManagement\Web\obj\Debug\Web.Data.XtraReport1.resources
 E:\Source code\StudentManagementProject\StudentManagement\Web\obj\Debug\Web.csproj.GenerateResource.cache
 E:\Source code\StudentManagementProject\StudentManagement\Web\obj\Debug\Web.dll.licenses
-E:\Source code\StudentManagementProject\StudentManagement\Web\obj\Debug\Web.csproj.AssemblyReference.cache

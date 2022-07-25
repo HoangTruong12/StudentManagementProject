@@ -20,7 +20,7 @@ namespace Web.Controllers
         // GET: Subject
         public ActionResult Index(string subjectName)
         {
-            var listSubjects = _subjectService.GetSubjects( subjectName);
+            var listSubjects = _subjectService.GetSubjects(subjectName);
             return View(listSubjects);
         }
 

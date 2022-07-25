@@ -1,17 +1,22 @@
 ﻿create table Classes
 (
 	ClassID int primary key identity(1,1),
+	-- ClassID int primary key,
 	ClassName nvarchar(100),
 )
+
 
 go
 
 create table Students
 (
-	StudentID int primary key identity(1,1),
+    StudentID int primary key identity(1,1),
+	-- StudentID int primary key,
 	StudentName nvarchar(100),
 	Age int,
-	ClassID int foreign key(ClassID) references Classes(ClassID),
+	ClassID int foreign key(ClassID) references Classes(ClassID)
+	on update cascade
+	on delete cascade
 )
 
 go
@@ -19,6 +24,7 @@ go
 create table Subjects
 (
 	SubjectID int primary key identity(1,1),
+	--SubjectID int primary key,
 	SubjectName nvarchar(100)
 )
 
@@ -27,16 +33,38 @@ go
 create table ExamResults
 (
 	ResultID int identity(1,1) primary key,
+	-- ResultID int primary key,
 	SubjectID int,
 	StudentID int,
-	foreign key(SubjectID) references Subjects(SubjectID),
-	foreign key(StudentID) references Students(StudentID),
+	foreign key(SubjectID) references Subjects(SubjectID)
+	on update cascade
+	on delete cascade,
+	foreign key(StudentID) references Students(StudentID)
+	on update cascade
+	on delete cascade,
 	StartTermPoint float,
 	MidTermPoint float,
 	EndTermPoint float
 )
 
+select *
+from dbo.Students 
+
+delete from dbo.Students
+where ClassID is NULL
+
+
 ----------------Store Proceduce----------------------------------
+
+
+create proc GetClassName
+as 
+begin
+	select distinct ClassName
+	from dbo.Classes
+end
+
+exec GetClassName
 
 alter proc GetAllSearchInfo
 as

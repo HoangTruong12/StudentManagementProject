@@ -12,8 +12,8 @@
       <PropertyRef Name="ResultID" />
     </Key>
     <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SubjectID" Type="int" Nullable="false" />
-    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="StudentID" Type="int" />
     <Property Name="StartTermPoint" Type="float" />
     <Property Name="MidTermPoint" Type="float" />
     <Property Name="EndTermPoint" Type="float" />
@@ -34,8 +34,10 @@
     <Property Name="SubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubjectName" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK__ExamResul__Stude__6A30C649">
-    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+  <Association Name="FK__ExamResul__Stude__2B0A656D">
+    <End Role="Students" Type="Self.Students" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ExamResults" Type="Self.ExamResults" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Students">
@@ -46,8 +48,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ExamResul__Subje__693CA210">
-    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+  <Association Name="FK__ExamResul__Subje__2A164134">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ExamResults" Type="Self.ExamResults" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Subjects">
@@ -58,8 +62,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Students__ClassI__619B8048">
-    <End Role="Classes" Type="Self.Classes" Multiplicity="0..1" />
+  <Association Name="FK__Students__ClassI__25518C17">
+    <End Role="Classes" Type="Self.Classes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Students" Type="Self.Students" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Classes">
@@ -71,6 +77,7 @@
     </ReferentialConstraint>
   </Association>
   <Function Name="GetAllSearchInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetClassName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetStudentsByClassName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ClassName" Type="nvarchar" Mode="In" />
   </Function>
@@ -86,15 +93,15 @@
     <EntitySet Name="ExamResults" EntityType="Self.ExamResults" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ExamResul__Stude__6A30C649" Association="Self.FK__ExamResul__Stude__6A30C649">
+    <AssociationSet Name="FK__ExamResul__Stude__2B0A656D" Association="Self.FK__ExamResul__Stude__2B0A656D">
       <End Role="Students" EntitySet="Students" />
       <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
-    <AssociationSet Name="FK__ExamResul__Subje__693CA210" Association="Self.FK__ExamResul__Subje__693CA210">
+    <AssociationSet Name="FK__ExamResul__Subje__2A164134" Association="Self.FK__ExamResul__Subje__2A164134">
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
-    <AssociationSet Name="FK__Students__ClassI__619B8048" Association="Self.FK__Students__ClassI__619B8048">
+    <AssociationSet Name="FK__Students__ClassI__25518C17" Association="Self.FK__Students__ClassI__25518C17">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Students" EntitySet="Students" />
     </AssociationSet>
