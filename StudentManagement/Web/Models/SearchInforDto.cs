@@ -11,9 +11,10 @@ namespace Web.Models
         public Nullable<int> Age { get; set; }
         public string ClassName { get; set; }
         public string SubjectName { get; set; }
-        //public Nullable<double> StartTermPoint { get; set; }
-        //public Nullable<double> MidTermPoint { get; set; }
-        //public Nullable<double> EndTermPoint { get; set; }
+        public Nullable<double> StartTermPoint { get; set; }
+        public Nullable<double> MidTermPoint { get; set; }
+        public Nullable<double> EndTermPoint { get; set; }
         public Nullable<double> AvgScore { get; set; }
+        public string Rating { get; set; }
     }
 }

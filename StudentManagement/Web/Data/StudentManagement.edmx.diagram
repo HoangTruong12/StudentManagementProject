@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="afa8da963d234fec9aa295af4c3e2805" Name="Diagram1">
+      <Diagram DiagramId="a6c22993bbef416da6dd12ead299bf07" Name="Diagram1">
         <EntityTypeShape EntityType="StudentManagementModel.Class" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="StudentManagementModel.ExamResult" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="StudentManagementModel.Student" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="StudentManagementModel.Subject" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="StudentManagementModel.FK__Students__ClassI__25518C17" ManuallyRouted="false" />
-        <AssociationConnector Association="StudentManagementModel.FK__ExamResul__Stude__2B0A656D" ManuallyRouted="false" />
-        <AssociationConnector Association="StudentManagementModel.FK__ExamResul__Subje__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementModel.FK__Students__ClassI__45BE5BA9" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementModel.FK__ExamResul__Stude__4F47C5E3" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementModel.FK__ExamResul__Subje__4E53A1AA" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

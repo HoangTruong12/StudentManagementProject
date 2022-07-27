@@ -15,8 +15,8 @@ namespace Web.Data
     public partial class ExamResult
     {
         public int ResultID { get; set; }
-        public Nullable<int> SubjectID { get; set; }
         public Nullable<int> StudentID { get; set; }
+        public Nullable<int> SubjectID { get; set; }
         public Nullable<double> StartTermPoint { get; set; }
         public Nullable<double> MidTermPoint { get; set; }
         public Nullable<double> EndTermPoint { get; set; }

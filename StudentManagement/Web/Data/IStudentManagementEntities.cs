@@ -20,7 +20,7 @@ namespace Web.Data
         ObjectResult<GetStudentsByStudentName_Result> GetStudentsByStudentName(string studentName);
         ObjectResult<GetStudentsInfoByRating_Result> GetStudentsInfoByRating(string rating);
         ObjectResult<GetStudentsTop10_Result> GetStudentsTop10();
-
+        ObjectResult<GetStudentSearchInfo_Result> GetStudentSearchInfo(string studentName, string className, string rating);
         ObjectResult<string> GetClassName();
 
         void SaveChanges();

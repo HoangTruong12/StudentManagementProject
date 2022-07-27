@@ -13,8 +13,8 @@
       <EntityTypeMapping TypeName="StudentManagementModel.ExamResult">
         <MappingFragment StoreEntitySet="ExamResults">
           <ScalarProperty Name="ResultID" ColumnName="ResultID" />
-          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
           <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
           <ScalarProperty Name="StartTermPoint" ColumnName="StartTermPoint" />
           <ScalarProperty Name="MidTermPoint" ColumnName="MidTermPoint" />
           <ScalarProperty Name="EndTermPoint" ColumnName="EndTermPoint" />
@@ -50,6 +50,7 @@
           <ScalarProperty Name="MidTermPoint" ColumnName="MidTermPoint" />
           <ScalarProperty Name="EndTermPoint" ColumnName="EndTermPoint" />
           <ScalarProperty Name="AvgScore" ColumnName="AvgScore" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -82,6 +83,21 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentSearchInfo" FunctionName="StudentManagementModel.Store.GetStudentSearchInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="StudentManagementModel.GetStudentSearchInfo_Result">
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="StartTermPoint" ColumnName="StartTermPoint" />
+          <ScalarProperty Name="MidTermPoint" ColumnName="MidTermPoint" />
+          <ScalarProperty Name="EndTermPoint" ColumnName="EndTermPoint" />
+          <ScalarProperty Name="AvgScore" ColumnName="AvgScore" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="GetStudentsInfoByRating" FunctionName="StudentManagementModel.Store.GetStudentsInfoByRating">
       <ResultMapping>
         <ComplexTypeMapping TypeName="StudentManagementModel.GetStudentsInfoByRating_Result">
@@ -107,6 +123,7 @@
           <ScalarProperty Name="MidTermPoint" ColumnName="MidTermPoint" />
           <ScalarProperty Name="EndTermPoint" ColumnName="EndTermPoint" />
           <ScalarProperty Name="AvgScore" ColumnName="AvgScore" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

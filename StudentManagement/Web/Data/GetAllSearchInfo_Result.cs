@@ -21,5 +21,6 @@ namespace Web.Data
         public Nullable<double> MidTermPoint { get; set; }
         public Nullable<double> EndTermPoint { get; set; }
         public Nullable<double> AvgScore { get; set; }
+        public string Rating { get; set; }
     }
 }

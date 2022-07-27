@@ -16,6 +16,7 @@ namespace Web.Service.Interfaces
         IEnumerable<SearchInforDto> GetStudentsByStudentName(string studentName);
         IEnumerable<SearchInforDto> GetStudentsByRating(string rating);
         IEnumerable<SearchInforDto> GetStudentsTop10();
+        IEnumerable<SearchInforDto> GetStudentInfoByCondition(string studentName = "", string className = "", string rating = "");
 
         List<SelectListItem> ListRating();
         IEnumerable<ClassDto> GetAllClasses();

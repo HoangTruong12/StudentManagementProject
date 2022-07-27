@@ -19,7 +19,7 @@ namespace Web.Service.Implement
         }
         public IEnumerable<SearchInforDto> GetAllSearchInfor()
         {
-            var listSearch = _studentManagementEntities.GetAllSearchInfo();
+            var listSearch = _studentManagementEntities.GetAllSearchInfo().Take(20);
 
             var result = listSearch.Select(x => new SearchInforDto
             {
@@ -27,7 +27,11 @@ namespace Web.Service.Implement
                 Age = x.Age,
                 ClassName = x.ClassName,
                 SubjectName = x.SubjectName,
-                AvgScore = x.AvgScore
+                StartTermPoint = x.StartTermPoint,
+                MidTermPoint = x.MidTermPoint,
+                EndTermPoint = x.EndTermPoint,
+                AvgScore = x.AvgScore,
+                Rating = x.Rating
             });
 
             return result;
@@ -119,7 +123,6 @@ namespace Web.Service.Implement
                 ClassName = x.ClassName,
             });
 
-
             return result;
         }
 
@@ -133,10 +136,34 @@ namespace Web.Service.Implement
                 Age = x.Age,
                 ClassName = x.ClassName,
                 SubjectName = x.SubjectName,
-                AvgScore = x.AvgScore
+                StartTermPoint = x.StartTermPoint, 
+                MidTermPoint =x.MidTermPoint,
+                EndTermPoint = x.EndTermPoint,
+                AvgScore = x.AvgScore,
+                Rating = x.Rating
             });
 
             return convert;
+        }
+
+        public IEnumerable<SearchInforDto> GetStudentInfoByCondition(string studentName = "", string className = "", string rating = "")
+        {
+            var std = _studentManagementEntities.GetStudentSearchInfo(studentName, className, rating).ToList();
+
+            var convert = std.Select(x => new SearchInforDto
+            {
+                StudentName = x.StudentName,
+                Age = x.Age,
+                ClassName = x.ClassName,
+                SubjectName = x.SubjectName,
+                StartTermPoint = x.StartTermPoint,
+                MidTermPoint = x.MidTermPoint,
+                EndTermPoint = x.EndTermPoint,
+                AvgScore = x.AvgScore,
+                Rating = x.Rating
+            });
+
+            return convert.ToList();
         }
     }
 }

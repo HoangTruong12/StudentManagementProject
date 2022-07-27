@@ -12,8 +12,8 @@
       <PropertyRef Name="ResultID" />
     </Key>
     <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SubjectID" Type="int" />
     <Property Name="StudentID" Type="int" />
+    <Property Name="SubjectID" Type="int" />
     <Property Name="StartTermPoint" Type="float" />
     <Property Name="MidTermPoint" Type="float" />
     <Property Name="EndTermPoint" Type="float" />
@@ -34,7 +34,7 @@
     <Property Name="SubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubjectName" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK__ExamResul__Stude__2B0A656D">
+  <Association Name="FK__ExamResul__Stude__4F47C5E3">
     <End Role="Students" Type="Self.Students" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -48,7 +48,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ExamResul__Subje__2A164134">
+  <Association Name="FK__ExamResul__Subje__4E53A1AA">
     <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -62,7 +62,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Students__ClassI__25518C17">
+  <Association Name="FK__Students__ClassI__45BE5BA9">
     <End Role="Classes" Type="Self.Classes" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -84,6 +84,11 @@
   <Function Name="GetStudentsByStudentName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="StudentName" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="GetStudentSearchInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="studentName" Type="nvarchar" Mode="In" />
+    <Parameter Name="className" Type="nvarchar" Mode="In" />
+    <Parameter Name="rating" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="GetStudentsInfoByRating" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Rating" Type="nvarchar" Mode="In" />
   </Function>
@@ -93,15 +98,15 @@
     <EntitySet Name="ExamResults" EntityType="Self.ExamResults" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ExamResul__Stude__2B0A656D" Association="Self.FK__ExamResul__Stude__2B0A656D">
+    <AssociationSet Name="FK__ExamResul__Stude__4F47C5E3" Association="Self.FK__ExamResul__Stude__4F47C5E3">
       <End Role="Students" EntitySet="Students" />
       <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
-    <AssociationSet Name="FK__ExamResul__Subje__2A164134" Association="Self.FK__ExamResul__Subje__2A164134">
+    <AssociationSet Name="FK__ExamResul__Subje__4E53A1AA" Association="Self.FK__ExamResul__Subje__4E53A1AA">
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
-    <AssociationSet Name="FK__Students__ClassI__25518C17" Association="Self.FK__Students__ClassI__25518C17">
+    <AssociationSet Name="FK__Students__ClassI__45BE5BA9" Association="Self.FK__Students__ClassI__45BE5BA9">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Students" EntitySet="Students" />
     </AssociationSet>

@@ -30,7 +30,7 @@ namespace Web.Service.Implement
 
 
             //return listClasses;
-            var listClasses = _studentManagementEntities.Classes.ToList();
+            var listClasses = _studentManagementEntities.Classes.Take(20).ToList();
 
             var result = listClasses.Select(x => new ClassDto
             {

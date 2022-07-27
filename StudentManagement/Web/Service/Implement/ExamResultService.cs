@@ -19,7 +19,7 @@ namespace Web.Service.Implement
 
         public IEnumerable<ExamResultDto> GetExamResults()
         {
-            var listScores = _studentManagementEntities.ExamResults.Include("Subject").Include("Student").ToList();
+            var listScores = _studentManagementEntities.ExamResults.Include("Subject").Include("Student").Take(20).ToList();
 
             var result = listScores.Select(x => new ExamResultDto
             {

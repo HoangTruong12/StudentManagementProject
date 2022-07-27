@@ -20,7 +20,7 @@ namespace Web.Service.Implement
 
         public IEnumerable<StudentDto> GetStudents(string studentName, int classID = 0)
         {
-            var listStudents = _studentManagementEntities.Students.Include("Class").ToList();
+            var listStudents = _studentManagementEntities.Students.Include("Class").Take(20).ToList();
 
             var result = listStudents.Select(x => new StudentDto
             {

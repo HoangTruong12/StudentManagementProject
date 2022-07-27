@@ -6,20 +6,20 @@
     </Key>
     <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Students" Relationship="Self.FK__Students__ClassI__25518C17" FromRole="Classes" ToRole="Students" />
+    <NavigationProperty Name="Students" Relationship="Self.FK__Students__ClassI__45BE5BA9" FromRole="Classes" ToRole="Students" />
   </EntityType>
   <EntityType Name="ExamResult">
     <Key>
       <PropertyRef Name="ResultID" />
     </Key>
     <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SubjectID" Type="Int32" />
     <Property Name="StudentID" Type="Int32" />
+    <Property Name="SubjectID" Type="Int32" />
     <Property Name="StartTermPoint" Type="Double" />
     <Property Name="MidTermPoint" Type="Double" />
     <Property Name="EndTermPoint" Type="Double" />
-    <NavigationProperty Name="Student" Relationship="Self.FK__ExamResul__Stude__2B0A656D" FromRole="ExamResults" ToRole="Students" />
-    <NavigationProperty Name="Subject" Relationship="Self.FK__ExamResul__Subje__2A164134" FromRole="ExamResults" ToRole="Subjects" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__ExamResul__Stude__4F47C5E3" FromRole="ExamResults" ToRole="Students" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK__ExamResul__Subje__4E53A1AA" FromRole="ExamResults" ToRole="Subjects" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -29,8 +29,8 @@
     <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="Int32" />
     <Property Name="ClassID" Type="Int32" />
-    <NavigationProperty Name="Class" Relationship="Self.FK__Students__ClassI__25518C17" FromRole="Students" ToRole="Classes" />
-    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Stude__2B0A656D" FromRole="Students" ToRole="ExamResults" />
+    <NavigationProperty Name="Class" Relationship="Self.FK__Students__ClassI__45BE5BA9" FromRole="Students" ToRole="Classes" />
+    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Stude__4F47C5E3" FromRole="Students" ToRole="ExamResults" />
   </EntityType>
   <EntityType Name="Subject">
     <Key>
@@ -38,9 +38,9 @@
     </Key>
     <Property Name="SubjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SubjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Subje__2A164134" FromRole="Subjects" ToRole="ExamResults" />
+    <NavigationProperty Name="ExamResults" Relationship="Self.FK__ExamResul__Subje__4E53A1AA" FromRole="Subjects" ToRole="ExamResults" />
   </EntityType>
-  <Association Name="FK__Students__ClassI__25518C17">
+  <Association Name="FK__Students__ClassI__45BE5BA9">
     <End Role="Classes" Type="Self.Class" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -54,7 +54,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ExamResul__Stude__2B0A656D">
+  <Association Name="FK__ExamResul__Stude__4F47C5E3">
     <End Role="Students" Type="Self.Student" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -68,7 +68,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ExamResul__Subje__2A164134">
+  <Association Name="FK__ExamResul__Subje__4E53A1AA">
     <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -87,15 +87,15 @@
     <EntitySet Name="ExamResults" EntityType="Self.ExamResult" />
     <EntitySet Name="Students" EntityType="Self.Student" />
     <EntitySet Name="Subjects" EntityType="Self.Subject" />
-    <AssociationSet Name="FK__Students__ClassI__25518C17" Association="Self.FK__Students__ClassI__25518C17">
+    <AssociationSet Name="FK__Students__ClassI__45BE5BA9" Association="Self.FK__Students__ClassI__45BE5BA9">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Students" EntitySet="Students" />
     </AssociationSet>
-    <AssociationSet Name="FK__ExamResul__Stude__2B0A656D" Association="Self.FK__ExamResul__Stude__2B0A656D">
+    <AssociationSet Name="FK__ExamResul__Stude__4F47C5E3" Association="Self.FK__ExamResul__Stude__4F47C5E3">
       <End Role="Students" EntitySet="Students" />
       <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
-    <AssociationSet Name="FK__ExamResul__Subje__2A164134" Association="Self.FK__ExamResul__Subje__2A164134">
+    <AssociationSet Name="FK__ExamResul__Subje__4E53A1AA" Association="Self.FK__ExamResul__Subje__4E53A1AA">
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="ExamResults" EntitySet="ExamResults" />
     </AssociationSet>
@@ -106,6 +106,11 @@
     </FunctionImport>
     <FunctionImport Name="GetStudentsByStudentName" ReturnType="Collection(StudentManagementModel.GetStudentsByStudentName_Result)">
       <Parameter Name="StudentName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetStudentSearchInfo" ReturnType="Collection(StudentManagementModel.GetStudentSearchInfo_Result)">
+      <Parameter Name="studentName" Mode="In" Type="String" />
+      <Parameter Name="className" Mode="In" Type="String" />
+      <Parameter Name="rating" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="GetStudentsInfoByRating" ReturnType="Collection(StudentManagementModel.GetStudentsInfoByRating_Result)">
       <Parameter Name="Rating" Mode="In" Type="String" />
@@ -121,6 +126,7 @@
     <Property Type="Double" Name="MidTermPoint" Nullable="true" />
     <Property Type="Double" Name="EndTermPoint" Nullable="true" />
     <Property Type="Double" Name="AvgScore" Nullable="true" />
+    <Property Type="String" Name="Rating" Nullable="true" MaxLength="10" />
   </ComplexType>
   <ComplexType Name="GetStudentsByClassName_Result">
     <Property Type="String" Name="StudentName" Nullable="true" MaxLength="100" />
@@ -142,6 +148,17 @@
     <Property Type="Double" Name="EndTermPoint" Nullable="true" />
     <Property Type="Double" Name="AvgScore" Nullable="true" />
   </ComplexType>
+  <ComplexType Name="GetStudentSearchInfo_Result">
+    <Property Type="String" Name="StudentName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+    <Property Type="String" Name="ClassName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SubjectName" Nullable="true" MaxLength="100" />
+    <Property Type="Double" Name="StartTermPoint" Nullable="true" />
+    <Property Type="Double" Name="MidTermPoint" Nullable="true" />
+    <Property Type="Double" Name="EndTermPoint" Nullable="true" />
+    <Property Type="Double" Name="AvgScore" Nullable="true" />
+    <Property Type="String" Name="Rating" Nullable="true" MaxLength="10" />
+  </ComplexType>
   <ComplexType Name="GetStudentsInfoByRating_Result">
     <Property Type="String" Name="StudentName" Nullable="true" MaxLength="100" />
     <Property Type="Int32" Name="Age" Nullable="true" />
@@ -161,5 +178,6 @@
     <Property Type="Double" Name="MidTermPoint" Nullable="true" />
     <Property Type="Double" Name="EndTermPoint" Nullable="true" />
     <Property Type="Double" Name="AvgScore" Nullable="true" />
+    <Property Type="String" Name="Rating" Nullable="true" MaxLength="10" />
   </ComplexType>
 </Schema>

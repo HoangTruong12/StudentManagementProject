@@ -60,6 +60,23 @@ namespace Web.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentsByStudentName_Result>("GetStudentsByStudentName", studentNameParameter);
         }
     
+        public virtual ObjectResult<GetStudentSearchInfo_Result> GetStudentSearchInfo(string studentName, string className, string rating)
+        {
+            var studentNameParameter = studentName != null ?
+                new ObjectParameter("studentName", studentName) :
+                new ObjectParameter("studentName", typeof(string));
+    
+            var classNameParameter = className != null ?
+                new ObjectParameter("className", className) :
+                new ObjectParameter("className", typeof(string));
+    
+            var ratingParameter = rating != null ?
+                new ObjectParameter("rating", rating) :
+                new ObjectParameter("rating", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentSearchInfo_Result>("GetStudentSearchInfo", studentNameParameter, classNameParameter, ratingParameter);
+        }
+    
         public virtual ObjectResult<GetStudentsInfoByRating_Result> GetStudentsInfoByRating(string rating)
         {
             var ratingParameter = rating != null ?

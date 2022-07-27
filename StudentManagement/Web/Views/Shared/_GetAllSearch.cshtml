@@ -1,58 +1,71 @@
 ﻿@model IEnumerable<Web.Models.SearchInforDto>
 
-@{
+@*@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Index</h2>
-
-@using (Html.BeginForm("GetInfoSearchByStudentName", "Search", FormMethod.Get))
-{
-    <p>
-        Input: @Html.TextBox("searchString") <input type="submit" value="Search" />
-    </p>
-}
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Age)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ClassName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SubjectName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AvgScore)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AvgScore)
-            </td>
-        </tr>
+}*@
+<style>
+   /* h2{
+        text-align: center;
+    }*/
+    thead{
+        background-color: black;
+        color: white;
     }
+    table {
+        border: 1px solid black;
+    }
+    td, th{
+        padding: 5px;
+        font-size:14px;
+    }
+</style>
+
+<h2>List Students</h2>
+
+
+
+<table class="tablen table-bordered table-striped" border="1" style="border-color:black">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvgScore)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvgScore)
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

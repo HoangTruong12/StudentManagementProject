@@ -11,7 +11,7 @@
 {
     <div class="form-group row">
         <div class="col-lg-10">
-            Nhập tên học sinh: @Html.TextBox("studentName") --- Lớp: @Html.DropDownList("className", "Tất cả") --- Học lực: @Html.DropDownList("rating", new SelectList(new[] { "Chọn học lực", "Giỏi", "Khá", "Trung bình", "Yếu" }))
+            Nhập tên học sinh: @Html.TextBox("studentName") --- Lớp: @Html.DropDownList("className", "Tất cả") --- Học lực: @Html.DropDownList("rating", new SelectList(new[] { "", "Giỏi", "Khá", "Trung bình", "Yếu" }))
         </div>
 
     </div>
@@ -20,6 +20,7 @@
         <input type="submit" value="Search" class="btn btn-primary" />
     </div>
 }
+<a href="@Url.Action("ExportPDF", "Search")" class="btn btn-success">Export PDF</a>
 
 @*@using (Html.BeginForm("Index", "Search", FormMethod.Get))
     {
@@ -51,30 +52,53 @@
             @Html.DisplayNameFor(model => model.SubjectName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.StartTermPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MidTermPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTermPoint)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AvgScore)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AvgScore)
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.StudentName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Age)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ClassName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SubjectName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartTermPoint)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MidTermPoint)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EndTermPoint)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AvgScore)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Rating)
+    </td>
+</tr>
     }
 
 </table>

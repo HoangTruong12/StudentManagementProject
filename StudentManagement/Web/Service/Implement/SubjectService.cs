@@ -20,7 +20,7 @@ namespace Web.Service.Implement
 
         public IEnumerable<SubjectDto> GetSubjects(string subjectName)
         {
-            var listSubjects = _studentManagementEntities.Subjects.ToList();
+            var listSubjects = _studentManagementEntities.Subjects.Take(20).ToList();
 
             var result = listSubjects.Select(x => new SubjectDto
             {
